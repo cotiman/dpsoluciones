@@ -225,7 +225,7 @@
         </div>
         <div class="flex items-center justify-between py-3 text-sm">
             <span class="text-white font-bold">Subtotal Estimado:</span>
-            <span class="text-lg font-black text-[#00D2FF] title-sequel" id="offCanvasSubtotal">$0 ARS</span>
+            <span class="text-lg font-black text-[#00D2FF] title-sequel" id="offCanvasSubtotal">$U 0</span>
         </div>
         
         <button id="offCanvasCheckoutBtn" class="offcanvas-checkout-btn group">

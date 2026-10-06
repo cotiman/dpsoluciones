@@ -100,111 +100,12 @@ get_header(); ?>
                     Transformamos visiones en experiencias cinematográficas. Desde comerciales de alta gama hasta piezas de autor, aplicamos color grading de nivel cinematográfico en cada frame.
                 </p>
 
-                <!-- Pills de Filtro — Behance: borde gris fino, fondo transparente, mayúsculas con tracking amplio -->
-                <div class="flex flex-wrap gap-3" id="portfolioFilterContainer">
-                    <button class="portfolio-filter-pill active" data-filter="all">TODOS</button>
-                    <button class="portfolio-filter-pill" data-filter="comercial">COMERCIAL</button>
-                    <button class="portfolio-filter-pill" data-filter="color-grading">COLOR GRADING</button>
-                    <button class="portfolio-filter-pill" data-filter="drone">AÉREO / DRONE</button>
-                </div>
+                <!-- Pills de Filtro generadas desde la taxonomía de Portfolio -->
+                <?php dp_render_portfolio_filters(); ?>
             </div>
 
-            <!-- Grilla de Proyectos — Fase 2 Behance -->
-            <div class="portfolio-masonry-grid" id="portfolioMasonry">
-
-                <!-- Proyecto 1 -->
-                <div class="masonry-item" data-category="comercial color-grading" onclick="location.href='<?php echo esc_url( home_url( '/portfolio/the-neon-protocol/' ) ); ?>'">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-semibold tracking-widest uppercase text-white shadow-lg">
-                        <i data-lucide="play" class="w-3 h-3 fill-current text-[#00D2FF]"></i> VIDEO 4K &middot; 0:45 MIN
-                    </span>
-                    <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80" alt="The Neon Protocol" class="masonry-img" loading="lazy" />
-                    <video class="masonry-video-preview" muted loop playsinline preload="none">
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-                    </video>
-                    <div class="masonry-overlay">
-                        <span class="masonry-category-label">Campaña Comercial &middot; Look Dev</span>
-                        <h3 class="masonry-project-title">The Neon Protocol</h3>
-                        <div class="cinematic-meta-badge">
-                            <i data-lucide="camera" class="w-3 h-3"></i>
-                            <span>Sony FX6 &middot; 35mm f/1.4 GM &middot; S-Log3</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Proyecto 2 -->
-                <div class="masonry-item" data-category="narrativo drone" onclick="location.href='<?php echo esc_url( home_url( '/portfolio/sierras-horizon-hyperlapse/' ) ); ?>'">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-semibold tracking-widest uppercase text-white shadow-lg">
-                        <i data-lucide="film" class="w-3 h-3 fill-current text-[#00D2FF]"></i> ANAMÓRFICO &middot; 1:20 MIN
-                    </span>
-                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80" alt="Sierras Horizon 4K" class="masonry-img" loading="lazy" />
-                    <video class="masonry-video-preview" muted loop playsinline preload="none">
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
-                    </video>
-                    <div class="masonry-overlay">
-                        <span class="masonry-category-label">Documental &middot; Cinematografía Aérea</span>
-                        <h3 class="masonry-project-title">Sierras Horizon Hyperlapse</h3>
-                        <div class="cinematic-meta-badge">
-                            <i data-lucide="aperture" class="w-3 h-3"></i>
-                            <span>DJI Mini 4 Pro &middot; 4K HDR &middot; D-Log M</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Proyecto 3 -->
-                <div class="masonry-item" data-category="color-grading comercial" onclick="location.href='<?php echo esc_url( home_url( '/portfolio/prism-void-genesis/' ) ); ?>'">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-semibold tracking-widest uppercase text-white shadow-lg">
-                        <i data-lucide="play" class="w-3 h-3 fill-current text-[#00D2FF]"></i> CGI &middot; 0:35 MIN
-                    </span>
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" alt="Prism Void Genesis" class="masonry-img" loading="lazy" />
-                    <video class="masonry-video-preview" muted loop playsinline preload="none">
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4" type="video/mp4">
-                    </video>
-                    <div class="masonry-overlay">
-                        <span class="masonry-category-label">CGI &middot; Color Grading</span>
-                        <h3 class="masonry-project-title">Prism Void Genesis</h3>
-                        <div class="cinematic-meta-badge">
-                            <i data-lucide="sliders" class="w-3 h-3"></i>
-                            <span>DaVinci Resolve Studio &middot; Film Emulation Kodak 2383</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Proyecto 4 -->
-                <div class="masonry-item" data-category="editorial moda" onclick="location.href='<?php echo esc_url( home_url( '/portfolio/chroma-solitude/' ) ); ?>'">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-semibold tracking-widest uppercase text-white shadow-lg">
-                        <i data-lucide="camera" class="w-3 h-3 text-[#00D2FF]"></i> FOTOGRAFÍA EDITORIAL
-                    </span>
-                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=80" alt="Chroma Solitude" class="masonry-img" loading="lazy" />
-                    <div class="masonry-overlay">
-                        <span class="masonry-category-label">Fotografía Editorial &middot; High-Fashion</span>
-                        <h3 class="masonry-project-title">Chroma Solitude</h3>
-                        <div class="cinematic-meta-badge">
-                            <i data-lucide="camera" class="w-3 h-3"></i>
-                            <span>Sony A7M5 &middot; 50mm f/1.2 GM</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Proyecto 5 -->
-                <div class="masonry-item" data-category="comercial" onclick="location.href='<?php echo esc_url( home_url( '/portfolio/cyber-tokyo-night/' ) ); ?>'">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-semibold tracking-widest uppercase text-white shadow-lg">
-                        <i data-lucide="play" class="w-3 h-3 fill-current text-[#00D2FF]"></i> REEL 4K &middot; 0:30 MIN
-                    </span>
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80" alt="Cyber Tokyo Night" class="masonry-img" loading="lazy" />
-                    <video class="masonry-video-preview" muted loop playsinline preload="none">
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" type="video/mp4">
-                    </video>
-                    <div class="masonry-overlay">
-                        <span class="masonry-category-label">Brand Film &middot; Street Production</span>
-                        <h3 class="masonry-project-title">Cyber Tokyo After Midnight</h3>
-                        <div class="cinematic-meta-badge">
-                            <i data-lucide="camera" class="w-3 h-3"></i>
-                            <span>Sony Alpha 7 IV &middot; 24mm f/1.4 GM</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            <!-- Grilla de Proyectos (CPT Portfolio · YouTube videos/shorts) -->
+            <?php dp_render_portfolio_grid(); ?>
 
 
         </div>
@@ -510,11 +411,8 @@ get_header(); ?>
 
             <!-- Tabs de Sesión -->
             <div class="session-filter-nav">
-                <button class="session-tab-btn active" data-session="all">Todas las Colecciones</button>
-                <button class="session-tab-btn" data-session="cyber-tokyo">Cyber Tokyo Night</button>
-                <button class="session-tab-btn" data-session="sierras-expedition">Sierras 4K Expedition</button>
-                <button class="session-tab-btn" data-session="liquid-chrome">Liquid Chrome &amp; CGI</button>
-                <button class="session-tab-btn" data-session="favorites">Mis Seleccionados</button>
+                <button class="session-tab-btn active" data-session="all"><?php esc_html_e( 'Todas las Fotos', 'studio-dark-portfolio' ); ?></button>
+                <button class="session-tab-btn" data-session="favorites"><?php esc_html_e( 'Mi Selección', 'studio-dark-portfolio' ); ?></button>
             </div>
 
             <!-- Filtros Facetados — monocromáticos -->
@@ -527,12 +425,6 @@ get_header(); ?>
                     <button class="filter-pill-btn" data-filter-type="orientation" data-filter-val="square">Cuadrado</button>
                 </div>
                 <div class="filter-group">
-                    <span class="filter-group-label">Tipo</span>
-                    <button class="filter-pill-btn active" data-filter-type="media-type" data-filter-val="all">Todos</button>
-                    <button class="filter-pill-btn" data-filter-type="media-type" data-filter-val="photo">Fotos</button>
-                    <button class="filter-pill-btn" data-filter-type="media-type" data-filter-val="video">Video Clips</button>
-                </div>
-                <div class="filter-group">
                     <span class="filter-group-label">Resolución</span>
                     <button class="filter-pill-btn active" data-filter-type="resolution" data-filter-val="all">Todas</button>
                     <button class="filter-pill-btn" data-filter-type="resolution" data-filter-val="4k">4K / 8K</button>
@@ -540,144 +432,8 @@ get_header(); ?>
                 </div>
             </div>
 
-            <!-- ═══ GRILLA DE STOCK — PICSEL STYLE ═══════════════════════ -->
-            <div class="fluid-grid-cards" id="stockGalleryGrid">
-
-                <!-- Item 1 -->
-                <div class="proof-photo-card" data-proof-id="stock-1" data-session="cyber-tokyo" data-orientation="horizontal" data-type="photo" data-resolution="4k">
-                    <button class="btn-proof-favorite" onclick="clientStore.togglePhotoSelection('stock-1', {id:'stock-1', title:'Cyber Pulse Neo Tokyo', priceARS:14500}, event)" title="Seleccionar">
-                        <i data-lucide="heart" class="w-3.5 h-3.5"></i>
-                    </button>
-                    <div class="stock-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80" alt="Cyber Pulse Neo Tokyo" loading="lazy" />
-                        <?php echo studio_get_watermark_layer( get_bloginfo( 'name' ) ); ?>
-                    </div>
-                    <div class="proof-card-footer">
-                        <div class="stock-card-meta">
-                            <span class="stock-meta-tag">Foto RAW &middot; 8K UHD &middot; Licencia Comercial</span>
-                            <span class="stock-card-title">Cyber Pulse Neo Tokyo</span>
-                            <span class="stock-card-price">$14.500 ARS</span>
-                        </div>
-                        <button class="stock-license-btn" onclick="location.href='<?php echo esc_url( home_url( '/producto/cyber-pulse-neo-tokyo/' ) ); ?>'">
-                            Ver licencia
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="proof-photo-card" data-proof-id="stock-2" data-session="sierras-expedition" data-orientation="horizontal" data-type="video" data-resolution="4k">
-                    <button class="btn-proof-favorite" onclick="clientStore.togglePhotoSelection('stock-2', {id:'stock-2', title:'Valle Edén Aerial 4K', priceARS:28000}, event)" title="Seleccionar">
-                        <i data-lucide="heart" class="w-3.5 h-3.5"></i>
-                    </button>
-                    <div class="stock-media-wrapper">
-                        <video muted loop playsinline preload="metadata" oncontextmenu="return false;">
-                            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-watermark-overlay">
-                            <div class="video-watermark-stamp">PREVIEW ONLY</div>
-                        </div>
-                    </div>
-                    <div class="proof-card-footer">
-                        <div class="stock-card-meta">
-                            <span class="stock-meta-tag">Video Clip &middot; ProRes 4K 60FPS &middot; Lic. Extendida</span>
-                            <span class="stock-card-title">Valle Edén Aerial 4K</span>
-                            <span class="stock-card-price">$28.000 ARS</span>
-                        </div>
-                        <button class="stock-license-btn" onclick="location.href='<?php echo esc_url( home_url( '/producto/valle-eden-aerial-4k/' ) ); ?>'">
-                            Ver licencia
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="proof-photo-card" data-proof-id="stock-3" data-session="liquid-chrome" data-orientation="vertical" data-type="photo" data-resolution="4k">
-                    <button class="btn-proof-favorite" onclick="clientStore.togglePhotoSelection('stock-3', {id:'stock-3', title:'Liquid Chrome Prism', priceARS:14500}, event)" title="Seleccionar">
-                        <i data-lucide="heart" class="w-3.5 h-3.5"></i>
-                    </button>
-                    <div class="stock-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" alt="Liquid Chrome Prism" loading="lazy" />
-                        <?php echo studio_get_watermark_layer( get_bloginfo( 'name' ) ); ?>
-                    </div>
-                    <div class="proof-card-footer">
-                        <div class="stock-card-meta">
-                            <span class="stock-meta-tag">Foto Vertical &middot; 300 DPI &middot; Licencia Comercial</span>
-                            <span class="stock-card-title">Liquid Chrome Prism</span>
-                            <span class="stock-card-price">$14.500 ARS</span>
-                        </div>
-                        <button class="stock-license-btn" onclick="location.href='<?php echo esc_url( home_url( '/producto/liquid-chrome-prism/' ) ); ?>'">
-                            Ver licencia
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Item 4 -->
-                <div class="proof-photo-card" data-proof-id="stock-4" data-session="sierras-expedition" data-orientation="horizontal" data-type="video" data-resolution="4k">
-                    <button class="btn-proof-favorite" onclick="clientStore.togglePhotoSelection('stock-4', {id:'stock-4', title:'Quebrada FPV Dynamic Run', priceARS:26000}, event)" title="Seleccionar">
-                        <i data-lucide="heart" class="w-3.5 h-3.5"></i>
-                    </button>
-                    <div class="stock-media-wrapper">
-                        <video muted loop playsinline preload="metadata" oncontextmenu="return false;">
-                            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-watermark-overlay">
-                            <div class="video-watermark-stamp">PREVIEW ONLY</div>
-                        </div>
-                    </div>
-                    <div class="proof-card-footer">
-                        <div class="stock-card-meta">
-                            <span class="stock-meta-tag">Video Clip &middot; 4K 120FPS D-Log &middot; Lic. Extendida</span>
-                            <span class="stock-card-title">Quebrada FPV Dynamic Run</span>
-                            <span class="stock-card-price">$26.000 ARS</span>
-                        </div>
-                        <button class="stock-license-btn" onclick="location.href='<?php echo esc_url( home_url( '/producto/quebrada-fpv-dynamic-run/' ) ); ?>'">
-                            Ver licencia
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="proof-photo-card" data-proof-id="stock-5" data-session="cyber-tokyo" data-orientation="horizontal" data-type="photo" data-resolution="4k">
-                    <button class="btn-proof-favorite" onclick="clientStore.togglePhotoSelection('stock-5', {id:'stock-5', title:'Kyoto Neon Rain Reflections', priceARS:16500}, event)" title="Seleccionar">
-                        <i data-lucide="heart" class="w-3.5 h-3.5"></i>
-                    </button>
-                    <div class="stock-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80" alt="Kyoto Neon Rain Reflections" loading="lazy" />
-                        <?php echo studio_get_watermark_layer( get_bloginfo( 'name' ) ); ?>
-                    </div>
-                    <div class="proof-card-footer">
-                        <div class="stock-card-meta">
-                            <span class="stock-meta-tag">Foto RAW &middot; 8K UHD 61MP &middot; Licencia Comercial</span>
-                            <span class="stock-card-title">Kyoto Neon Rain Reflections</span>
-                            <span class="stock-card-price">$16.500 ARS</span>
-                        </div>
-                        <button class="stock-license-btn" onclick="location.href='<?php echo esc_url( home_url( '/producto/kyoto-neon-rain-reflections/' ) ); ?>'">
-                            Ver licencia
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Item 6 -->
-                <div class="proof-photo-card" data-proof-id="stock-6" data-session="liquid-chrome" data-orientation="square" data-type="photo" data-resolution="4k">
-                    <button class="btn-proof-favorite" onclick="clientStore.togglePhotoSelection('stock-6', {id:'stock-6', title:'Abstract Geometric Void 3D', priceARS:18000}, event)" title="Seleccionar">
-                        <i data-lucide="heart" class="w-3.5 h-3.5"></i>
-                    </button>
-                    <div class="stock-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=80" alt="Abstract Geometric Void 3D" loading="lazy" />
-                        <?php echo studio_get_watermark_layer( get_bloginfo( 'name' ) ); ?>
-                    </div>
-                    <div class="proof-card-footer">
-                        <div class="stock-card-meta">
-                            <span class="stock-meta-tag">Arte Digital &middot; 16-Bit TIFF &middot; Licencia Comercial</span>
-                            <span class="stock-card-title">Abstract Geometric Void 3D</span>
-                            <span class="stock-card-price">$18.000 ARS</span>
-                        </div>
-                        <button class="stock-license-btn" onclick="location.href='<?php echo esc_url( home_url( '/producto/abstract-geometric-void-3d/' ) ); ?>'">
-                            Ver licencia
-                        </button>
-                    </div>
-                </div>
-
-            </div><!-- /.fluid-grid-cards -->
+            <!-- ═══ GRILLA DE STOCK (Productos WooCommerce · categoría Fotos) ═══ -->
+            <?php dp_render_store_grid(); ?>
 
             <!-- FLOATING DOCK — MONOCROMÁTICO -->
             <div class="floating-selection-dock" id="floatingSelectionDock">

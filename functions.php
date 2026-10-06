@@ -9,12 +9,24 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 
-define( 'STUDIO_THEME_VERSION', '1.0.0' );
+define( 'STUDIO_THEME_VERSION', '1.2.0' );
+
+/**
+ * 0. Módulos del Backoffice DP Producciones
+ */
+require_once get_template_directory() . '/inc/watermark.php';        // Motor de marca de agua (GD)
+require_once get_template_directory() . '/inc/portfolio-admin.php';  // Portfolio YouTube (videos/shorts)
+require_once get_template_directory() . '/inc/photo-store.php';      // Tienda de fotos (WooCommerce)
+require_once get_template_directory() . '/inc/frontend-render.php';  // Render de contenido real
+require_once get_template_directory() . '/inc/backoffice.php';       // Panel central de administración
 
 /**
  * 1. Configuración General del Tema
  */
 function studio_setup() {
+    // Traducciones del tema
+    load_theme_textdomain( 'studio-dark-portfolio', get_template_directory() . '/languages' );
+
     // Soporte para etiquetas del título automáticas
     add_theme_support( 'title-tag' );
 
@@ -143,6 +155,42 @@ function studio_enqueue_assets() {
     ) );
 }
 add_action( 'wp_enqueue_scripts', 'studio_enqueue_assets' );
+
+/**
+ * 2b. Motor de utilidades Tailwind
+ *
+ * El markup del tema usa clases utilitarias de Tailwind (flex, grid, gap-*,
+ * text-*, bg-[#...], lg:col-span-*, etc.). Sin Tailwind presente, el contenido
+ * se renderiza sin maquetar. Cargamos el runtime Play CDN con la configuración
+ * de marca inline. Para producción de alto tráfico conviene reemplazarlo por un
+ * build compilado (ver nota en el README), pero esto restablece el diseño sin
+ * necesidad de tooling en el hosting.
+ */
+function studio_print_tailwind_runtime() {
+    ?>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        if ( window.tailwind ) {
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            cyan:  { DEFAULT: '#00D2FF' },
+                            brand: { blue: '#0066FF', cyan: '#00D2FF', obsidian: '#0D0D0D' }
+                        },
+                        fontFamily: {
+                            sans:  ['Montserrat', 'system-ui', 'sans-serif'],
+                            title: ['"Space Grotesk"', 'Montserrat', 'system-ui', 'sans-serif']
+                        }
+                    }
+                },
+                corePlugins: { preflight: false } // evita pisar el reset propio del tema
+            };
+        }
+    </script>
+    <?php
+}
+add_action( 'wp_head', 'studio_print_tailwind_runtime', 1 );
 
 /**
  * 3. Registro de Custom Post Type: PORTFOLIO
