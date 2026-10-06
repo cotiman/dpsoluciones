@@ -1,0 +1,20 @@
+/*
+Theme Name: Studio Dark Portfolio & Digital Store
+Theme URI: https://aetherstudio.art
+Author: Dante & Antigravity
+Author URI: https://aetherstudio.art
+Description: Tema premium ultra-moderno con arquitectura estrictamente fluida (320px a 8K) para WordPress y WooCommerce. Incluye Portafolio Cinematográfico Masonry con Casos de Estudio y Tienda/Área de Clientes con Marca de Agua y cobro automatizado por Mercado Pago. Paleta en tonos azul eléctrico, negro obsidiana, blanco y plata metálica con tipografía Montserrat y estética Sequel Sans.
+Version: 1.2.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: studio-dark-portfolio
+Tags: portfolio, photography, dark, e-commerce, woocommerce, modern, grid-layout, digital-downloads, fluid-responsive, masonry, case-study
+*/
+
+@import url('assets/css/fluid-tokens.css');
+@import url('assets/css/theme-style.css');
+@import url('assets/css/portfolio-masonry.css');
+@import url('assets/css/client-store.css');
