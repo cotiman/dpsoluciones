@@ -64,11 +64,18 @@ function dp_render_portfolio_grid() {
         $kind  = get_post_meta( $pid, '_studio_media_kind', true );
         $yt_id = get_post_meta( $pid, '_studio_youtube_id', true );
 
-        // Miniatura: imagen destacada o, si no hay, miniatura de YouTube.
+        // Miniatura de la preview:
+        //  1) imagen destacada si la subiste;
+        //  2) si no, la miniatura de YouTube en alta (maxresdefault) con fallback
+        //     automático a hqdefault cuando el video no tiene versión HD.
+        $thumb_fallback = '';
         if ( has_post_thumbnail() ) {
             $thumb = get_the_post_thumbnail_url( $pid, 'large' );
+        } elseif ( $yt_id ) {
+            $thumb          = 'https://i.ytimg.com/vi/' . $yt_id . '/maxresdefault.jpg';
+            $thumb_fallback = dp_youtube_thumbnail( $yt_id ); // hqdefault (siempre existe)
         } else {
-            $thumb = $yt_id ? dp_youtube_thumbnail( $yt_id ) : 'https://via.placeholder.com/1200x800?text=DP+Producciones';
+            $thumb = 'https://via.placeholder.com/1200x800?text=DP+Producciones';
         }
 
         // Categorías como clases para el filtro JS.
@@ -92,7 +99,11 @@ function dp_render_portfolio_grid() {
             <span class="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-semibold tracking-widest uppercase text-white shadow-lg">
                 <i data-lucide="<?php echo esc_attr( $badge_icon ); ?>" class="w-3 h-3 fill-current text-[#00D2FF]"></i> <?php echo $badge_text; ?>
             </span>
-            <img src="<?php echo esc_url( $thumb ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="masonry-img" loading="lazy" />
+            <img src="<?php echo esc_url( $thumb ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="masonry-img" loading="lazy"<?php if ( $thumb_fallback ) : ?> onerror="this.onerror=null;this.src='<?php echo esc_url( $thumb_fallback ); ?>';"<?php endif; ?> />
+            <!-- Botón de reproducción (indica que la preview es un video de YouTube) -->
+            <span class="dp-play-badge" aria-hidden="true">
+                <i data-lucide="play" class="w-5 h-5 fill-current"></i>
+            </span>
             <div class="masonry-overlay">
                 <?php if ( $first ) : ?>
                     <span class="masonry-category-label"><?php echo esc_html( $first ); ?></span>

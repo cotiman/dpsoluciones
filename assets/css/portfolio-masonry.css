@@ -26,6 +26,36 @@
 }
 
 /* ─── 2. TARJETA — BEHANCE CLEAN CARD ───────────────────────────────────── */
+/* Botón de reproducción centrado sobre la preview de YouTube */
+.dp-play-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 8;
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0D0D0D;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease;
+}
+
+.masonry-item:hover .dp-play-badge {
+  transform: translate(-50%, -50%) scale(1.12);
+  background: #00D2FF;
+}
+
+.masonry-item--short .dp-play-badge {
+  width: 48px;
+  height: 48px;
+}
+
 .masonry-item {
   position: relative;
   border-radius: 4px;      /* Behance: redondeo mínimo */
