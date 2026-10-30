@@ -16,7 +16,7 @@
     <!-- ==========================================================================
          FOOTER AUDIOVISUAL — 4 COLUMNAS
          ========================================================================== -->
-    <footer id="contacto" class="site-footer">
+    <footer id="pie" class="site-footer">
 
         <style>
             /* ── FOOTER BASE ──────────────────────────────────────────────────── */
@@ -195,48 +195,68 @@
 
                     <!-- ══ COL 1: IDENTIDAD ════════════════════════════════════ -->
                     <div class="av-footer__brand">
-                        <h2 class="av-footer__brand-name">DP<br>Producciones</h2>
+                        <h2 class="av-footer__brand-name"><?php echo esc_html( dp_mod( 'dp_footer_brand' ) ); ?></h2>
                         <p class="av-footer__tagline">
-                            Estética cinematográfica y narrativa visual de alta fidelidad.
+                            <?php echo esc_html( dp_mod( 'dp_footer_tagline' ) ); ?>
                         </p>
                         <p style="font-size: 11px; font-weight: 400; color: #333333; letter-spacing: 0.08em; text-transform: uppercase; margin: 0.5rem 0 0 0;">
-                            Montevideo, Uruguay
+                            <?php echo esc_html( dp_mod( 'dp_footer_location' ) ); ?>
                         </p>
                     </div>
 
                     <!-- ══ COL 2: PRODUCCIÓN ═══════════════════════════════════ -->
                     <div class="av-footer__col">
-                        <h3 class="av-footer__col-title">Producción</h3>
-                        <ul class="av-footer__links">
-                            <li><a href="#portfolio">Spots Comerciales</a></li>
-                            <li><a href="#portfolio">Piezas de Autor</a></li>
-                            <li><a href="#color-grading">Color Grading</a></li>
-                            <li><a href="#portfolio">Cinematografía Aérea</a></li>
-                            <li><a href="#portfolio">Casos de Estudio</a></li>
-                        </ul>
+                        <h3 class="av-footer__col-title"><?php echo esc_html( dp_mod( 'dp_footer_col2_title' ) ); ?></h3>
+                        <?php if ( has_nav_menu( 'footer_col_prod' ) ) : ?>
+                            <?php wp_nav_menu( array(
+                                'theme_location' => 'footer_col_prod',
+                                'container'      => false,
+                                'menu_class'     => 'av-footer__links',
+                                'depth'          => 1,
+                                'fallback_cb'    => false,
+                            ) ); ?>
+                        <?php else : ?>
+                            <ul class="av-footer__links">
+                                <li><a href="#portfolio">Spots Comerciales</a></li>
+                                <li><a href="#portfolio">Piezas de Autor</a></li>
+                                <li><a href="#color-grading">Color Grading</a></li>
+                                <li><a href="#portfolio">Cinematografía Aérea</a></li>
+                                <li><a href="#portfolio">Casos de Estudio</a></li>
+                            </ul>
+                        <?php endif; ?>
                     </div>
 
                     <!-- ══ COL 3: TIENDA DE RECURSOS ══════════════════════════ -->
                     <div class="av-footer__col">
-                        <h3 class="av-footer__col-title">Tienda de Recursos</h3>
-                        <ul class="av-footer__links">
-                            <li><a href="#tienda">Cinematic LUTs</a></li>
-                            <li><a href="#tienda">Stock Footage 4K</a></li>
-                            <li><a href="#tienda">Texturas de Cine</a></li>
-                            <li><a href="#tienda">Licencias de Uso</a></li>
-                            <li><a href="#tienda">Catálogo Completo</a></li>
-                        </ul>
+                        <h3 class="av-footer__col-title"><?php echo esc_html( dp_mod( 'dp_footer_col3_title' ) ); ?></h3>
+                        <?php if ( has_nav_menu( 'footer_col_store' ) ) : ?>
+                            <?php wp_nav_menu( array(
+                                'theme_location' => 'footer_col_store',
+                                'container'      => false,
+                                'menu_class'     => 'av-footer__links',
+                                'depth'          => 1,
+                                'fallback_cb'    => false,
+                            ) ); ?>
+                        <?php else : ?>
+                            <ul class="av-footer__links">
+                                <li><a href="#tienda">Cinematic LUTs</a></li>
+                                <li><a href="#tienda">Stock Footage 4K</a></li>
+                                <li><a href="#tienda">Texturas de Cine</a></li>
+                                <li><a href="#tienda">Licencias de Uso</a></li>
+                                <li><a href="#tienda">Catálogo Completo</a></li>
+                            </ul>
+                        <?php endif; ?>
                     </div>
 
                     <!-- ══ COL 4: CONECTAR ════════════════════════════════════ -->
                     <div class="av-footer__col">
-                        <h3 class="av-footer__col-title">Conectar</h3>
+                        <h3 class="av-footer__col-title"><?php echo esc_html( dp_mod( 'dp_footer_col4_title' ) ); ?></h3>
                         <ul class="av-footer__links">
                             <li><a href="#contacto">Briefing de Proyecto</a></li>
-                            <li><a href="mailto:hola@dpproducciones.com">Contacto Directo</a></li>
+                            <li><a href="mailto:<?php echo esc_attr( dp_mod( 'dp_contact_email' ) ); ?>"><?php echo esc_html( dp_mod( 'dp_contact_email' ) ); ?></a></li>
                             <!-- Redes con iconos inline -->
                             <li>
-                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="av-footer__social-link">
+                                <a href="<?php echo esc_url( dp_mod( 'dp_social_instagram' ) ); ?>" target="_blank" rel="noopener noreferrer" class="av-footer__social-link">
                                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -246,7 +266,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="https://vimeo.com" target="_blank" rel="noopener noreferrer" class="av-footer__social-link">
+                                <a href="<?php echo esc_url( dp_mod( 'dp_social_vimeo' ) ); ?>" target="_blank" rel="noopener noreferrer" class="av-footer__social-link">
                                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M2.2 7.6c.1 2.2 1.6 5.1 4.5 8.7 3 3.7 5.5 5.5 7.6 5.5 1.3 0 2.4-1.2 3.3-3.6.9-3.4 1.5-6 1.8-7.8.4-2.1.2-3.1-.7-3.1-.6 0-1.5.5-2.7 1.5l-1.5 1.3c.5-1.7 1.3-3 2.5-3.8 1.2-.9 2.5-1.3 3.9-1.3 1.8 0 2.9 1 3.2 3 .3 2.1-.2 4.9-1.5 8.4-1.4 3.7-3.2 5.5-5.5 5.5-2.2 0-3.9-1.6-5.1-4.7L10.2 11c-.7-2.6-1.5-3.9-2.4-3.9-.3 0-.9.4-1.8 1.2L4.5 9.4l-2.3-1.8z"></path>
                                     </svg>
@@ -254,7 +274,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="av-footer__social-link">
+                                <a href="<?php echo esc_url( dp_mod( 'dp_social_linkedin' ) ); ?>" target="_blank" rel="noopener noreferrer" class="av-footer__social-link">
                                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                                         <rect x="2" y="9" width="4" height="12"></rect>
@@ -271,9 +291,9 @@
                 <!-- BOTTOM BAR CENTRADO -->
                 <div class="av-footer__bottom">
                     <p class="av-footer__credit">
-                        Basado en Montevideo, Uruguay. Disponible para proyectos globales.
+                        <?php echo esc_html( dp_mod( 'dp_footer_location' ) ); ?>. Disponible para proyectos globales.
                         <span>&mdash;</span>
-                        &copy; <?php echo date('Y'); ?> DP Producciones
+                        &copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php echo esc_html( dp_mod( 'dp_footer_copyright' ) ); ?>
                     </p>
                 </div>
 

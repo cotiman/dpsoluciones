@@ -182,12 +182,50 @@ class ClientStoreEngine {
     openBatchCheckout() {
         if (this.selectedPhotos.size === 0) return;
 
+        const store = window.dpStore || {};
         const items = Array.from(this.selectedPhotos.values());
-        if (typeof window.openMercadoPagoBatchCheckout === 'function') {
-            window.openMercadoPagoBatchCheckout(items);
-        } else {
-            alert(`Iniciando checkout de Mercado Pago para ${items.length} obras seleccionadas.`);
+        const ids = items.map(it => it.id).filter(Boolean);
+
+        // Sin WooCommerce configurado: avisar con elegancia.
+        if (!store.wcActive || !store.ajaxUrl) {
+            alert((store.i18n && store.i18n.noStore) || 'La tienda todavía no está configurada.');
+            return;
         }
+
+        const checkoutBtn = document.getElementById('dockCheckoutBtn');
+        const originalHTML = checkoutBtn ? checkoutBtn.innerHTML : '';
+        if (checkoutBtn) {
+            checkoutBtn.disabled = true;
+            checkoutBtn.textContent = (store.i18n && store.i18n.adding) || 'Agregando…';
+        }
+
+        // Agregar la selección al carrito de WooCommerce y redirigir al checkout,
+        // donde el método de pago Mercado Pago procesa la operación.
+        const body = new URLSearchParams();
+        body.append('action', 'dp_batch_to_cart');
+        body.append('nonce', store.nonce || '');
+        ids.forEach(id => body.append('ids[]', id));
+
+        fetch(store.ajaxUrl, {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: body.toString()
+        })
+            .then(r => r.json())
+            .then(res => {
+                if (res && res.success && res.data && res.data.checkout_url) {
+                    window.location.href = res.data.checkout_url;
+                } else {
+                    const msg = (res && res.data && res.data.message) || (store.i18n && store.i18n.error) || 'Error';
+                    alert(msg);
+                    if (checkoutBtn) { checkoutBtn.disabled = false; checkoutBtn.innerHTML = originalHTML; }
+                }
+            })
+            .catch(() => {
+                alert((store.i18n && store.i18n.error) || 'Error de conexión. Intentá de nuevo.');
+                if (checkoutBtn) { checkoutBtn.disabled = false; checkoutBtn.innerHTML = originalHTML; }
+            });
     }
 }
 

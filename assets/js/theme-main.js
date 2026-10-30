@@ -111,13 +111,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (offCanvasCheckoutBtn) {
         offCanvasCheckoutBtn.addEventListener('click', () => {
-            // Si existe la función de checkout de client-store-engine, ejecutarla
+            const store = window.dpStore || {};
+            // Si hay fotos seleccionadas en el dock, usar ese flujo (carrito + checkout).
             const dockCheckout = document.getElementById('dockCheckoutBtn');
-            if (dockCheckout) {
+            if (window.clientStore && window.clientStore.selectedPhotos && window.clientStore.selectedPhotos.size > 0 && dockCheckout) {
                 closeCartDrawer();
                 dockCheckout.click();
+            } else if (store.checkoutUrl) {
+                // Ir directo al checkout de WooCommerce (donde actúa Mercado Pago).
+                window.location.href = store.checkoutUrl;
             } else {
-                alert('Redirigiendo a la pasarela oficial de Mercado Pago...');
+                alert((store.i18n && store.i18n.noStore) || 'La tienda todavía no está configurada.');
             }
         });
     }

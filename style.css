@@ -14,7 +14,9 @@ Text Domain: studio-dark-portfolio
 Tags: portfolio, photography, dark, e-commerce, woocommerce, modern, grid-layout, digital-downloads, fluid-responsive, masonry, case-study
 */
 
-@import url('assets/css/fluid-tokens.css');
-@import url('assets/css/theme-style.css');
-@import url('assets/css/portfolio-masonry.css');
-@import url('assets/css/client-store.css');
+/*
+ * Las hojas de estilo (fluid-tokens, theme-style, portfolio-masonry, client-store)
+ * se cargan de forma ordenada y con control de dependencias desde functions.php
+ * mediante wp_enqueue_style(). No usar @import aquí para evitar doble descarga
+ * y bloqueo de render.
+ */
