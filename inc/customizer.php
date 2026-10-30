@@ -146,15 +146,10 @@ function dp_customize_register( $wp_customize ) {
 
     /* ---- Sección: Identidad / Logo ---- */
     $wp_customize->add_section( 'dp_sec_identity', array(
-        'title' => __( 'Identidad & Logo', 'studio-dark-portfolio' ),
-        'panel' => 'dp_home_panel',
+        'title'       => __( 'Identidad & Logo', 'studio-dark-portfolio' ),
+        'description' => __( 'El logo del encabezado se sube en “Identidad del sitio → Logo”. Si no cargás uno, se muestra el nombre del sitio con el ícono.', 'studio-dark-portfolio' ),
+        'panel'       => 'dp_home_panel',
     ) );
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'dp_logo_hint', array(
-        'label'       => __( 'Logo del encabezado', 'studio-dark-portfolio' ),
-        'description' => __( 'El logo se sube en “Identidad del sitio → Logo”. Si no cargás uno, se muestra el nombre del sitio con el ícono.', 'studio-dark-portfolio' ),
-        'section'     => 'dp_sec_identity',
-        'settings'    => array(),
-    ) ) );
     $add( 'dp_brand_tagline', __( 'Bajada del encabezado', 'studio-dark-portfolio' ), 'dp_sec_identity', 'text' );
 
     /* ---- Sección: Inicio (Hero) ---- */
