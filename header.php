@@ -35,19 +35,28 @@
 
         <!-- Marca / Logotipo (Centrado en móvil, a la izquierda en desktop) -->
         <div class="header-brand">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand-link group">
-                <div class="brand-badge">
-                    <i data-lucide="aperture" class="w-5 h-5 text-black stroke-[2.5]"></i>
-                </div>
-                <div class="brand-text">
-                    <span class="brand-title title-sequel">
-                        <?php bloginfo( 'name' ); ?><span class="text-[#00D2FF]">.</span>
-                    </span>
-                    <span class="brand-tagline">
-                        CINEMA &middot; DRONE &middot; DESIGN
-                    </span>
-                </div>
-            </a>
+            <?php if ( has_custom_logo() ) : ?>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand-link brand-link--logo group">
+                    <?php the_custom_logo(); ?>
+                    <?php if ( dp_mod( 'dp_brand_tagline' ) ) : ?>
+                        <span class="brand-tagline"><?php echo esc_html( dp_mod( 'dp_brand_tagline' ) ); ?></span>
+                    <?php endif; ?>
+                </a>
+            <?php else : ?>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand-link group">
+                    <div class="brand-badge">
+                        <i data-lucide="aperture" class="w-5 h-5 text-black stroke-[2.5]"></i>
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-title title-sequel">
+                            <?php bloginfo( 'name' ); ?><span class="text-[#00D2FF]">.</span>
+                        </span>
+                        <?php if ( dp_mod( 'dp_brand_tagline' ) ) : ?>
+                            <span class="brand-tagline"><?php echo esc_html( dp_mod( 'dp_brand_tagline' ) ); ?></span>
+                        <?php endif; ?>
+                    </div>
+                </a>
+            <?php endif; ?>
         </div>
 
         <!-- Menú de Navegación Desktop con Mega-Menú de Portafolio -->
@@ -286,9 +295,15 @@
     <div class="mobile-fullscreen-footer">
         <p class="text-xs text-slate-400">Cinematografía 4K &middot; Drones DJI &middot; Arte Gráfico</p>
         <div class="flex items-center gap-4 text-[#00D2FF] mt-2">
-            <a href="#" aria-label="Instagram"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-            <a href="#" aria-label="Vimeo"><i data-lucide="video" class="w-5 h-5"></i></a>
-            <a href="#" aria-label="YouTube"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+            <?php if ( dp_mod( 'dp_social_instagram' ) ) : ?>
+                <a href="<?php echo esc_url( dp_mod( 'dp_social_instagram' ) ); ?>" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+            <?php endif; ?>
+            <?php if ( dp_mod( 'dp_social_vimeo' ) ) : ?>
+                <a href="<?php echo esc_url( dp_mod( 'dp_social_vimeo' ) ); ?>" target="_blank" rel="noopener noreferrer" aria-label="Vimeo"><i data-lucide="video" class="w-5 h-5"></i></a>
+            <?php endif; ?>
+            <?php if ( dp_mod( 'dp_social_youtube' ) ) : ?>
+                <a href="<?php echo esc_url( dp_mod( 'dp_social_youtube' ) ); ?>" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+            <?php endif; ?>
         </div>
     </div>
 </div>

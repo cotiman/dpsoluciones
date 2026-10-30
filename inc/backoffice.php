@@ -101,6 +101,7 @@ function dp_render_backoffice_page() {
         </table>
 
         <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px">
+            <a class="button button-primary button-hero" href="<?php echo esc_url( admin_url( 'customize.php' ) ); ?>">🎨 <?php esc_html_e( 'Editar textos/imágenes del Home', 'studio-dark-portfolio' ); ?></a>
             <a class="button button-primary button-hero" href="<?php echo esc_url( admin_url( 'edit.php?post_type=portfolio' ) ); ?>">🎬 <?php esc_html_e( 'Administrar Portfolio', 'studio-dark-portfolio' ); ?></a>
             <a class="button button-primary button-hero" href="<?php echo esc_url( admin_url( 'post-new.php?post_type=portfolio' ) ); ?>">➕ <?php esc_html_e( 'Nuevo video / short', 'studio-dark-portfolio' ); ?></a>
             <?php if ( $wc ) : ?>

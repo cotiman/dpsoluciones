@@ -28,6 +28,22 @@ Menú **DP Backoffice** en el panel de WordPress (barra lateral), con:
 4. **GD**: el motor de marca de agua usa la extensión **GD** de PHP (activa por
    defecto en Hostinger). El panel DP Backoffice avisa si falta.
 
+## Editar textos e imágenes del Home
+
+Desde **DP Backoffice → “Editar textos/imágenes del Home”** (abre **Apariencia →
+Personalizar**, con vista previa en vivo). Panel **“DP · Contenido del Home”** con:
+
+- **Identidad & Logo**: logo del encabezado (se sube en *Identidad del sitio →
+  Logo*; si no hay, se muestra el nombre + ícono) y la bajada del encabezado.
+- **Inicio (sección principal)**: imagen de fondo, etiqueta, título (3 partes),
+  párrafo, los 2 botones (texto + enlace) y los 3 datos destacados.
+- **Sobre mí**: foto de perfil, nombre, rol, etiqueta, título y biografía.
+- **Contacto & Redes**: marca y bajada del pie, ubicación, email de contacto,
+  Instagram, YouTube, Vimeo, LinkedIn y el nombre del copyright.
+
+Los servicios, el portfolio y la tienda de fotos NO se editan acá: el portfolio y
+las fotos se cargan como contenido (ver abajo).
+
 ## Cómo cargar contenido
 
 ### Un video o short del portfolio

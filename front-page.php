@@ -13,64 +13,61 @@ get_header(); ?>
     <!-- 1. HERO PORTAL A PANTALLA COMPLETA (100vh) -->
     <!-- ========================================== -->
     <section id="inicio" class="hero-portal-section">
-        <!-- Imagen de Fondo Inmersiva con Soporte para Formatos de Nueva Generación (AVIF/WebP) -->
-        <picture class="hero-bg-picture">
-            <source srcset="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=3840&q=85&fm=avif" type="image/avif">
-            <source srcset="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=3840&q=85&fm=webp" type="image/webp">
-            <img 
-                src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=3840&q=85" 
-                alt="<?php bloginfo( 'name' ); ?> - Portada Inmersiva" 
-                class="hero-bg-img" 
-                fetchpriority="high" 
-                decoding="async"
-            >
-        </picture>
+        <!-- Imagen de Fondo Inmersiva (editable en Personalizar → Inicio) -->
+        <?php $dp_hero_bg = dp_mod( 'dp_hero_bg' ); ?>
+        <?php if ( $dp_hero_bg ) : ?>
+            <img src="<?php echo esc_url( $dp_hero_bg ); ?>"
+                 alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
+                 class="hero-bg-img" fetchpriority="high" decoding="async">
+        <?php endif; ?>
 
         <!-- Capa de Superposición Oscura Sutil para Máxima Legibilidad -->
         <div class="hero-bg-overlay"></div>
 
         <!-- Contenedor Central Glassmorphism -->
         <div class="hero-portal-card glass-panel">
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-card border border-[#00D2FF]/30">
-                <span class="w-2 h-2 rounded-full bg-[#00D2FF] animate-ping"></span>
-                <span class="text-xs uppercase font-bold tracking-widest text-[#E2E8F0]">Visual Arts & Fine Photography</span>
-            </div>
+            <?php if ( dp_mod( 'dp_hero_badge' ) ) : ?>
+                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-card border border-[#00D2FF]/30">
+                    <span class="w-2 h-2 rounded-full bg-[#00D2FF] animate-ping"></span>
+                    <span class="text-xs uppercase font-bold tracking-widest text-[#E2E8F0]"><?php echo esc_html( dp_mod( 'dp_hero_badge' ) ); ?></span>
+                </div>
+            <?php endif; ?>
 
             <h1 class="hero-display-title title-sequel">
-                <span class="text-white"><?php bloginfo( 'name' ); ?></span><br>
-                <span class="text-metallic">PORTAL</span> <span class="text-blue-electric">CREATIVO</span>
+                <span class="text-white"><?php echo esc_html( dp_mod( 'dp_hero_title1' ) ); ?></span><br>
+                <span class="text-metallic"><?php echo esc_html( dp_mod( 'dp_hero_title2' ) ); ?></span> <span class="text-blue-electric"><?php echo esc_html( dp_mod( 'dp_hero_title3' ) ); ?></span>
             </h1>
 
             <p class="text-slate-300 max-w-xl mx-auto" style="font-size: var(--fluid-text-base);">
-                Bienvenido al espacio de creación visual contemporánea. Explora las series autorales en el portafolio o adquiere licencias maestras de alta resolución en la tienda protegida.
+                <?php echo esc_html( dp_mod( 'dp_hero_text' ) ); ?>
             </p>
 
             <!-- Dos Botones de Llamada a la Acción (CTA) de Igual Jerarquía -->
             <div class="portal-cta-group">
-                <a href="#portfolio" class="portal-btn portal-btn-portfolio">
+                <a href="<?php echo esc_url( dp_mod( 'dp_hero_cta1_link' ) ); ?>" class="portal-btn portal-btn-portfolio">
                     <i data-lucide="eye" class="w-4 h-4 stroke-[2.5]"></i>
-                    <span>Ver Portafolio</span>
+                    <span><?php echo esc_html( dp_mod( 'dp_hero_cta1_label' ) ); ?></span>
                 </a>
 
-                <a href="#tienda" class="portal-btn portal-btn-store">
+                <a href="<?php echo esc_url( dp_mod( 'dp_hero_cta2_link' ) ); ?>" class="portal-btn portal-btn-store">
                     <i data-lucide="sparkles" class="w-4 h-4 stroke-[2.5]"></i>
-                    <span>Tienda de Fotografías</span>
+                    <span><?php echo esc_html( dp_mod( 'dp_hero_cta2_label' ) ); ?></span>
                 </a>
             </div>
 
-            <!-- Métricas de Alto Valor y Confianza (Pod Glassmorphism) -->
+            <!-- Datos destacados (editables en Personalizar → Inicio) -->
             <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-4 border-t border-white/10 w-full max-w-lg">
                 <div class="p-3 sm:p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-                    <div class="title-sequel font-bold text-white text-xs sm:text-sm">8K &bull; 4K UHD</div>
-                    <div class="text-[10px] text-[#94A3B8] uppercase tracking-wider mt-0.5">Master ProRes RAW</div>
+                    <div class="title-sequel font-bold text-white text-xs sm:text-sm"><?php echo esc_html( dp_mod( 'dp_hero_m1_title' ) ); ?></div>
+                    <div class="text-[10px] text-[#94A3B8] uppercase tracking-wider mt-0.5"><?php echo esc_html( dp_mod( 'dp_hero_m1_sub' ) ); ?></div>
                 </div>
                 <div class="p-3 sm:p-3.5 rounded-2xl bg-[#00D2FF]/[0.05] border border-[#00D2FF]/20 text-center">
-                    <div class="title-sequel font-bold text-[#00D2FF] text-xs sm:text-sm">Mercado Pago</div>
-                    <div class="text-[10px] text-[#94A3B8] uppercase tracking-wider mt-0.5">Cobro Seguro 24/7</div>
+                    <div class="title-sequel font-bold text-[#00D2FF] text-xs sm:text-sm"><?php echo esc_html( dp_mod( 'dp_hero_m2_title' ) ); ?></div>
+                    <div class="text-[10px] text-[#94A3B8] uppercase tracking-wider mt-0.5"><?php echo esc_html( dp_mod( 'dp_hero_m2_sub' ) ); ?></div>
                 </div>
                 <div class="p-3 sm:p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-                    <div class="title-sequel font-bold text-white text-xs sm:text-sm">Descarga Instant</div>
-                    <div class="text-[10px] text-[#94A3B8] uppercase tracking-wider mt-0.5">Sin Marcas de Agua</div>
+                    <div class="title-sequel font-bold text-white text-xs sm:text-sm"><?php echo esc_html( dp_mod( 'dp_hero_m3_title' ) ); ?></div>
+                    <div class="text-[10px] text-[#94A3B8] uppercase tracking-wider mt-0.5"><?php echo esc_html( dp_mod( 'dp_hero_m3_sub' ) ); ?></div>
                 </div>
             </div>
         </div>
@@ -468,24 +465,26 @@ get_header(); ?>
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 <div class="lg:col-span-4 relative">
                     <div class="relative rounded-3xl overflow-hidden glass-card p-2">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Lead Visual Artist" class="w-full aspect-[4/5] object-cover rounded-2xl grayscale hover:grayscale-0 transition duration-700" />
+                        <img src="<?php echo esc_url( dp_mod( 'dp_about_photo' ) ); ?>" alt="<?php echo esc_attr( dp_mod( 'dp_about_name' ) ); ?>" class="w-full aspect-[4/5] object-cover rounded-2xl grayscale hover:grayscale-0 transition duration-700" />
                         <div class="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-black/80 backdrop-blur-lg border border-white/10">
-                            <h4 class="text-white font-bold text-sm"><?php bloginfo( 'name' ); ?></h4>
-                            <p class="text-xs text-[#00D2FF]">Director Creativo & Fotógrafo</p>
+                            <h4 class="text-white font-bold text-sm"><?php echo esc_html( dp_mod( 'dp_about_name' ) ); ?></h4>
+                            <p class="text-xs text-[#00D2FF]"><?php echo esc_html( dp_mod( 'dp_about_role' ) ); ?></p>
                         </div>
                     </div>
                 </div>
 
                 <div class="lg:col-span-8 space-y-5">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D2FF]/10 border border-[#00D2FF]/30 text-[#00D2FF] text-xs font-bold uppercase tracking-widest">
-                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-                        <span>Perfil Híbrido &bull; Dirección Creativa & IT</span>
-                    </div>
+                    <?php if ( dp_mod( 'dp_about_badge' ) ) : ?>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D2FF]/10 border border-[#00D2FF]/30 text-[#00D2FF] text-xs font-bold uppercase tracking-widest">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                            <span><?php echo esc_html( dp_mod( 'dp_about_badge' ) ); ?></span>
+                        </div>
+                    <?php endif; ?>
                     <h3 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight title-sequel">
-                        CREACIÓN AUDIOVISUAL, <span class="text-[#00D2FF]">DISEÑO DE MARCA</span> & INFRAESTRUCTURA TÉCNICA
+                        <?php echo esc_html( dp_mod( 'dp_about_title' ) ); ?>
                     </h3>
                     <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
-                        Especializado en converger la estética cinematográfica de alta fidelidad con la precisión del diseño gráfico contemporáneo y el rigor de la ingeniería tecnológica. Desde el rodaje publicitario en 4K/8K con ópticas de cine hasta el despliegue de redes corporativas, servidores de datos y almacenamiento masivo para flujos de trabajo de postproducción intensiva.
+                        <?php echo esc_html( dp_mod( 'dp_about_text' ) ); ?>
                     </p>
                 </div>
             </div>

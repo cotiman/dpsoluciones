@@ -568,6 +568,25 @@ dialog::backdrop {
   box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
 }
 
+/* Logo personalizado subido desde el Personalizador */
+.brand-link--logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.brand-link--logo .custom-logo-link {
+  display: inline-flex;
+  line-height: 0;
+}
+.brand-link--logo img,
+.brand-link--logo .custom-logo {
+  height: clamp(2.1rem, 1.8rem + 1vw, 3rem);
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+}
+
 .brand-title {
   font-weight: 800;
   font-size: clamp(1.1rem, 1rem + 0.3vw, 1.4rem);

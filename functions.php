@@ -18,6 +18,7 @@ require_once get_template_directory() . '/inc/watermark.php';        // Motor de
 require_once get_template_directory() . '/inc/portfolio-admin.php';  // Portfolio YouTube (videos/shorts)
 require_once get_template_directory() . '/inc/photo-store.php';      // Tienda de fotos (WooCommerce)
 require_once get_template_directory() . '/inc/frontend-render.php';  // Render de contenido real
+require_once get_template_directory() . '/inc/customizer.php';       // Personalizador del Home (textos/imágenes/logo/contacto)
 require_once get_template_directory() . '/inc/backoffice.php';       // Panel central de administración
 
 /**
