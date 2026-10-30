@@ -1399,3 +1399,82 @@ dialog::backdrop {
   box-shadow: 0 1px 0 0 #00D2FF !important;
 }
 
+
+/* ==========================================================================
+   12. SECCIÓN DE CONTACTO — Estilo oscuro para formularios (Contact Form 7, etc.)
+   ========================================================================== */
+.dp-contact-form .wpcf7-form p { margin: 0 0 1rem 0; }
+.dp-contact-form label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #CBD5E1;
+  margin-bottom: 0.4rem;
+}
+.dp-contact-form input[type="text"],
+.dp-contact-form input[type="email"],
+.dp-contact-form input[type="tel"],
+.dp-contact-form input[type="url"],
+.dp-contact-form input[type="date"],
+.dp-contact-form input[type="number"],
+.dp-contact-form select,
+.dp-contact-form textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 0.75rem !important;
+  padding: 0.75rem 0.9rem !important;
+  color: #FFFFFF !important;
+  font-family: inherit !important;
+  font-size: 0.9rem !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.dp-contact-form textarea { min-height: 140px; resize: vertical; }
+.dp-contact-form input:focus,
+.dp-contact-form select:focus,
+.dp-contact-form textarea:focus {
+  outline: none !important;
+  border-color: #00D2FF !important;
+  box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.15) !important;
+}
+.dp-contact-form input::placeholder,
+.dp-contact-form textarea::placeholder { color: #64748B; }
+
+/* Botón de envío */
+.dp-contact-form input[type="submit"],
+.dp-contact-form button[type="submit"],
+.dp-contact-form .wpcf7-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  padding: 0.85rem 1.75rem !important;
+  border: none !important;
+  border-radius: 0.875rem !important;
+  background: linear-gradient(135deg, #00D2FF 0%, #0066FF 100%) !important;
+  color: #001018 !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem !important;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(0, 102, 255, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.dp-contact-form input[type="submit"]:hover,
+.dp-contact-form button[type="submit"]:hover,
+.dp-contact-form .wpcf7-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -4px rgba(0, 210, 255, 0.5);
+}
+
+/* Mensajes de respuesta de Contact Form 7 */
+.dp-contact-form .wpcf7-response-output {
+  border-radius: 0.6rem !important;
+  margin: 1rem 0 0 0 !important;
+  padding: 0.75rem 1rem !important;
+  color: #E2E8F0;
+  font-size: 0.85rem;
+}
+.dp-contact-form .wpcf7-not-valid-tip { color: #FCA5A5 !important; font-size: 0.75rem; }

@@ -16,7 +16,7 @@
     <!-- ==========================================================================
          FOOTER AUDIOVISUAL — 4 COLUMNAS
          ========================================================================== -->
-    <footer id="contacto" class="site-footer">
+    <footer id="pie" class="site-footer">
 
         <style>
             /* ── FOOTER BASE ──────────────────────────────────────────────────── */
@@ -206,31 +206,51 @@
 
                     <!-- ══ COL 2: PRODUCCIÓN ═══════════════════════════════════ -->
                     <div class="av-footer__col">
-                        <h3 class="av-footer__col-title">Producción</h3>
-                        <ul class="av-footer__links">
-                            <li><a href="#portfolio">Spots Comerciales</a></li>
-                            <li><a href="#portfolio">Piezas de Autor</a></li>
-                            <li><a href="#color-grading">Color Grading</a></li>
-                            <li><a href="#portfolio">Cinematografía Aérea</a></li>
-                            <li><a href="#portfolio">Casos de Estudio</a></li>
-                        </ul>
+                        <h3 class="av-footer__col-title"><?php echo esc_html( dp_mod( 'dp_footer_col2_title' ) ); ?></h3>
+                        <?php if ( has_nav_menu( 'footer_col_prod' ) ) : ?>
+                            <?php wp_nav_menu( array(
+                                'theme_location' => 'footer_col_prod',
+                                'container'      => false,
+                                'menu_class'     => 'av-footer__links',
+                                'depth'          => 1,
+                                'fallback_cb'    => false,
+                            ) ); ?>
+                        <?php else : ?>
+                            <ul class="av-footer__links">
+                                <li><a href="#portfolio">Spots Comerciales</a></li>
+                                <li><a href="#portfolio">Piezas de Autor</a></li>
+                                <li><a href="#color-grading">Color Grading</a></li>
+                                <li><a href="#portfolio">Cinematografía Aérea</a></li>
+                                <li><a href="#portfolio">Casos de Estudio</a></li>
+                            </ul>
+                        <?php endif; ?>
                     </div>
 
                     <!-- ══ COL 3: TIENDA DE RECURSOS ══════════════════════════ -->
                     <div class="av-footer__col">
-                        <h3 class="av-footer__col-title">Tienda de Recursos</h3>
-                        <ul class="av-footer__links">
-                            <li><a href="#tienda">Cinematic LUTs</a></li>
-                            <li><a href="#tienda">Stock Footage 4K</a></li>
-                            <li><a href="#tienda">Texturas de Cine</a></li>
-                            <li><a href="#tienda">Licencias de Uso</a></li>
-                            <li><a href="#tienda">Catálogo Completo</a></li>
-                        </ul>
+                        <h3 class="av-footer__col-title"><?php echo esc_html( dp_mod( 'dp_footer_col3_title' ) ); ?></h3>
+                        <?php if ( has_nav_menu( 'footer_col_store' ) ) : ?>
+                            <?php wp_nav_menu( array(
+                                'theme_location' => 'footer_col_store',
+                                'container'      => false,
+                                'menu_class'     => 'av-footer__links',
+                                'depth'          => 1,
+                                'fallback_cb'    => false,
+                            ) ); ?>
+                        <?php else : ?>
+                            <ul class="av-footer__links">
+                                <li><a href="#tienda">Cinematic LUTs</a></li>
+                                <li><a href="#tienda">Stock Footage 4K</a></li>
+                                <li><a href="#tienda">Texturas de Cine</a></li>
+                                <li><a href="#tienda">Licencias de Uso</a></li>
+                                <li><a href="#tienda">Catálogo Completo</a></li>
+                            </ul>
+                        <?php endif; ?>
                     </div>
 
                     <!-- ══ COL 4: CONECTAR ════════════════════════════════════ -->
                     <div class="av-footer__col">
-                        <h3 class="av-footer__col-title">Conectar</h3>
+                        <h3 class="av-footer__col-title"><?php echo esc_html( dp_mod( 'dp_footer_col4_title' ) ); ?></h3>
                         <ul class="av-footer__links">
                             <li><a href="#contacto">Briefing de Proyecto</a></li>
                             <li><a href="mailto:<?php echo esc_attr( dp_mod( 'dp_contact_email' ) ); ?>"><?php echo esc_html( dp_mod( 'dp_contact_email' ) ); ?></a></li>

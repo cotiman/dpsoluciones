@@ -38,11 +38,24 @@ Personalizar**, con vista previa en vivo). Panel **“DP · Contenido del Home�
 - **Inicio (sección principal)**: imagen de fondo, etiqueta, título (3 partes),
   párrafo, los 2 botones (texto + enlace) y los 3 datos destacados.
 - **Sobre mí**: foto de perfil, nombre, rol, etiqueta, título y biografía.
+- **Portafolio (encabezado)** / **Tienda (encabezado)**: etiqueta, título y
+  párrafo de cada sección (los proyectos y las fotos se cargan como contenido).
+- **Color Grading**: etiqueta, título, párrafo, imagen del comparador y línea
+  técnica.
+- **Servicios / Especialidades**: título de la fila, etiqueta y las 3 tarjetas
+  (título + texto cada una).
+- **Contacto (sección con formulario)**: se agrega al final del home. Pegá el
+  shortcode de tu formulario (p. ej. **Contact Form 7**: instalá el plugin, creá
+  el formulario y copiá su shortcode `[contact-form-7 id="..."]`). Si lo dejás
+  vacío, se muestra tu email de contacto.
 - **Contacto & Redes**: marca y bajada del pie, ubicación, email de contacto,
-  Instagram, YouTube, Vimeo, LinkedIn y el nombre del copyright.
+  Instagram, YouTube, Vimeo, LinkedIn, copyright y los títulos de las columnas
+  del pie.
 
-Los servicios, el portfolio y la tienda de fotos NO se editan acá: el portfolio y
-las fotos se cargan como contenido (ver abajo).
+Los **enlaces** de las columnas “Producción” y “Tienda de Recursos” del pie se
+editan en **Apariencia → Menús**, asignándolos a las ubicaciones *Pie — Columna
+Producción* y *Pie — Columna Tienda* (si no creás menús, se muestran los enlaces
+por defecto).
 
 ## Cómo cargar contenido
 

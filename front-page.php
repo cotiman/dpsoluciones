@@ -84,17 +84,17 @@ get_header(); ?>
                 <!-- Eyebrow ultra-minimal: solo texto uppercase con línea -->
                 <p class="flex items-center gap-4 mb-8" style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em; color: #888888; margin: 0 0 2rem 0;">
                     <span style="display: inline-block; width: 2rem; height: 1px; background: #444444;"></span>
-                    PORTAFOLIO AUDIOVISUAL &middot; CASE STUDIES
+                    <?php echo esc_html( dp_mod( 'dp_pf_eyebrow' ) ); ?>
                 </p>
 
                 <!-- Título Masivo — Behance Bold -->
                 <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold title-sequel text-white" style="letter-spacing: -0.04em; line-height: 1.0; color: #FFFFFF; margin-bottom: 1.5rem;">
-                    PRODUCCIÓN<br>CINEMATOGRÁFICA
+                    <?php echo esc_html( dp_mod( 'dp_pf_title' ) ); ?>
                 </h2>
 
                 <!-- Párrafo: color #888888, line-height 1.8, 16px -->
                 <p style="color: #888888; line-height: 1.8; font-size: 16px; font-weight: 300; max-width: 700px; margin: 0 0 3rem 0;">
-                    Transformamos visiones en experiencias cinematográficas. Desde comerciales de alta gama hasta piezas de autor, aplicamos color grading de nivel cinematográfico en cada frame.
+                    <?php echo esc_html( dp_mod( 'dp_pf_text' ) ); ?>
                 </p>
 
                 <!-- Pills de Filtro generadas desde la taxonomía de Portfolio -->
@@ -120,13 +120,13 @@ get_header(); ?>
             <!-- Encabezado: max-w-[800px] per Behance spec -->
             <div class="max-w-[800px] mx-auto text-center mb-16">
                 <p style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em; color: #888888; margin: 0 0 1.5rem 0;">
-                    TÉCNICA CINEMATOGRÁFICA &middot; ETALONAJE
+                    <?php echo esc_html( dp_mod( 'dp_cg_eyebrow' ) ); ?>
                 </p>
                 <h2 class="font-extrabold text-white title-sequel" style="font-size: clamp(2rem, 1.5rem + 2.5vw, 5rem); letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 1.25rem;">
-                    Cinematic Color Grading:<br>Log to Final Film Look
+                    <?php echo esc_html( dp_mod( 'dp_cg_title' ) ); ?>
                 </h2>
                 <p style="color: #888888; line-height: 1.8; font-size: 16px; font-weight: 300; max-width: 640px; margin: 0 auto;">
-                    Transformamos la señal neutra de cámara (S-Log3/V-Log) en una pieza cinematográfica con emulación de película Kodak 2383. Desliza para ver el proceso de etalonaje.
+                    <?php echo esc_html( dp_mod( 'dp_cg_text' ) ); ?>
                 </p>
             </div>
 
@@ -153,7 +153,7 @@ get_header(); ?>
                     <!-- ── CAPA BASE: SOURCE (S-Log3 flat) ──────────────────── -->
                     <img
                         id="cgSourceImg"
-                        src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=2400&q=90"
+                        src="<?php echo esc_url( dp_mod( 'dp_cg_img' ) ); ?>"
                         alt="Source — S-Log3 Flat Profile"
                         style="
                             position: absolute; inset: 0;
@@ -198,7 +198,7 @@ get_header(); ?>
                         <!-- Imagen Apex: anclada al tamaño del padre — se sincroniza vía JS -->
                         <img
                             id="cgApexImg"
-                            src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=2400&q=90"
+                            src="<?php echo esc_url( dp_mod( 'dp_cg_img' ) ); ?>"
                             alt="Apex — Rec.709 Film Emulation"
                             style="
                                 position: absolute; top: 0; left: 0;
@@ -369,7 +369,7 @@ get_header(); ?>
                 <!-- Metadata técnica + botones de vista rápida -->
                 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.25rem;">
                     <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: #444444; font-family: ui-monospace, monospace; font-weight: 500;">
-                        [ CAMERA: SONY A7SIII ] &nbsp;|&nbsp; [ COLOR SPACE: REC.709 ] &nbsp;|&nbsp; [ LUT: APEX FILM ]
+                        <?php echo esc_html( dp_mod( 'dp_cg_meta' ) ); ?>
                     </div>
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
                         <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #333333; font-family: ui-monospace, monospace;">Vista:</span>
@@ -396,13 +396,13 @@ get_header(); ?>
             <!-- Cabecera Monocromática -->
             <div class="text-center max-w-[800px] mx-auto" style="margin-bottom: 56px;">
                 <p class="store-eyebrow" style="margin: 0 0 1.5rem 0; display: block; text-align: center;">
-                    Catálogo Oficial &middot; Fotografía & Video en Stock
+                    <?php echo esc_html( dp_mod( 'dp_store_eyebrow' ) ); ?>
                 </p>
                 <h2 class="font-extrabold text-white title-sequel" style="font-size: clamp(2rem, 1.5rem + 2.5vw, 4.5rem); letter-spacing: -0.05em; line-height: 1.0; margin-bottom: 1rem;">
-                    METRAJE 4K &<br>FOTOGRAFÍA AUTORAL
+                    <?php echo esc_html( dp_mod( 'dp_store_title' ) ); ?>
                 </h2>
                 <p style="color: #888888; font-size: 16px; font-weight: 300; line-height: 1.8; max-width: 600px; margin: 0 auto;">
-                    Seleccioná activos marcándolos con el corazón para armar tu selección y adquirirlos en lote con entrega instantánea.
+                    <?php echo esc_html( dp_mod( 'dp_store_text' ) ); ?>
                 </p>
             </div>
 
@@ -494,9 +494,9 @@ get_header(); ?>
                 <div class="flex items-center justify-between border-b border-white/10 pb-3">
                     <h4 class="text-xs uppercase font-extrabold tracking-widest text-[#E2E8F0] flex items-center gap-2">
                         <i data-lucide="layers" class="w-4 h-4 text-[#00D2FF]"></i>
-                        <span>Especialidades & Servicios Principales</span>
+                        <span><?php echo esc_html( dp_mod( 'dp_sv_label' ) ); ?></span>
                     </h4>
-                    <span class="text-[11px] text-slate-500 font-mono">End-to-End Workflow</span>
+                    <span class="text-[11px] text-slate-500 font-mono"><?php echo esc_html( dp_mod( 'dp_sv_note' ) ); ?></span>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
@@ -506,9 +506,9 @@ get_header(); ?>
                         <div class="w-12 h-12 rounded-xl bg-[#00D2FF]/10 border border-[#00D2FF]/20 text-[#00D2FF] flex items-center justify-center">
                             <i data-lucide="clapperboard" class="w-6 h-6"></i>
                         </div>
-                        <h4 class="text-white font-bold text-lg">Producción Comercial</h4>
+                        <h4 class="text-white font-bold text-lg"><?php echo esc_html( dp_mod( 'dp_sv_c1_title' ) ); ?></h4>
                         <p class="text-sm text-gray-400 leading-relaxed">
-                            Spots publicitarios, dirección de fotografía 4K/8K, rodajes aéreos con drones y corrección de color en DaVinci Resolve.
+                            <?php echo esc_html( dp_mod( 'dp_sv_c1_text' ) ); ?>
                         </p>
                     </div>
 
@@ -517,9 +517,9 @@ get_header(); ?>
                         <div class="w-12 h-12 rounded-xl bg-[#00D2FF]/10 border border-[#00D2FF]/20 text-[#00D2FF] flex items-center justify-center">
                             <i data-lucide="palette" class="w-6 h-6"></i>
                         </div>
-                        <h4 class="text-white font-bold text-lg">Diseño Gráfico & Indumentaria</h4>
+                        <h4 class="text-white font-bold text-lg"><?php echo esc_html( dp_mod( 'dp_sv_c2_title' ) ); ?></h4>
                         <p class="text-sm text-gray-400 leading-relaxed">
-                            Desarrollo de identidad visual, gráfica para indumentaria técnica, dirección de arte, cartelería de cine y packaging.
+                            <?php echo esc_html( dp_mod( 'dp_sv_c2_text' ) ); ?>
                         </p>
                     </div>
 
@@ -528,9 +528,9 @@ get_header(); ?>
                         <div class="w-12 h-12 rounded-xl bg-[#00D2FF]/10 border border-[#00D2FF]/20 text-[#00D2FF] flex items-center justify-center">
                             <i data-lucide="server" class="w-6 h-6"></i>
                         </div>
-                        <h4 class="text-white font-bold text-lg">Soporte IT & Infraestructura</h4>
+                        <h4 class="text-white font-bold text-lg"><?php echo esc_html( dp_mod( 'dp_sv_c3_title' ) ); ?></h4>
                         <p class="text-sm text-gray-400 leading-relaxed">
-                            Sistemas de almacenamiento masivo SAN/NAS de alta velocidad para postproducción, redes corporativas y seguridad de datos.
+                            <?php echo esc_html( dp_mod( 'dp_sv_c3_text' ) ); ?>
                         </p>
                     </div>
 
@@ -539,6 +539,55 @@ get_header(); ?>
 
         </div>
     </section>
+
+    <!-- ========================================== -->
+    <!-- 5. SECCIÓN DE CONTACTO (FORMULARIO)        -->
+    <!-- ========================================== -->
+    <?php if ( dp_mod( 'dp_contact_enable' ) ) : ?>
+    <section id="contacto" class="border-t border-white/5 bg-[#0D0D0D] relative overflow-hidden" style="padding-top: 140px; padding-bottom: 140px;">
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[380px] bg-[#0066FF]/10 rounded-full blur-[170px] pointer-events-none"></div>
+
+        <div class="studio-container max-w-3xl mx-auto relative z-10">
+            <div class="text-center mb-10">
+                <?php if ( dp_mod( 'dp_contact_eyebrow' ) ) : ?>
+                    <p class="store-eyebrow" style="margin: 0 0 1.25rem 0; display: block; text-align: center;">
+                        <?php echo esc_html( dp_mod( 'dp_contact_eyebrow' ) ); ?>
+                    </p>
+                <?php endif; ?>
+                <h2 class="font-extrabold text-white title-sequel" style="font-size: clamp(1.8rem, 1.4rem + 2vw, 3.5rem); letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 1rem;">
+                    <?php echo esc_html( dp_mod( 'dp_contact_title' ) ); ?>
+                </h2>
+                <?php if ( dp_mod( 'dp_contact_text' ) ) : ?>
+                    <p style="color: #888888; font-size: 16px; font-weight: 300; line-height: 1.8; max-width: 560px; margin: 0 auto;">
+                        <?php echo esc_html( dp_mod( 'dp_contact_text' ) ); ?>
+                    </p>
+                <?php endif; ?>
+            </div>
+
+            <div class="glass-card p-6 sm:p-10 rounded-3xl border border-white/10 dp-contact-form">
+                <?php
+                $dp_form = trim( (string) dp_mod( 'dp_contact_form' ) );
+                if ( '' !== $dp_form ) {
+                    // Formulario del plugin (Contact Form 7, WPForms, etc.).
+                    echo do_shortcode( $dp_form );
+                } else {
+                    // Fallback sin plugin: mostrar el email de contacto.
+                    $dp_email = dp_mod( 'dp_contact_email' );
+                    echo '<div class="text-center space-y-4">';
+                    echo '<p class="text-slate-300 text-sm">' . esc_html__( 'Escribinos directamente a:', 'studio-dark-portfolio' ) . '</p>';
+                    if ( $dp_email ) {
+                        echo '<a href="mailto:' . esc_attr( $dp_email ) . '" class="btn-primary" style="text-decoration:none;display:inline-flex;"><i data-lucide="mail" class="w-4 h-4"></i><span>' . esc_html( $dp_email ) . '</span></a>';
+                    }
+                    if ( current_user_can( 'manage_options' ) ) {
+                        echo '<p class="text-xs text-slate-500 mt-4">' . esc_html__( 'Sugerencia: instalá “Contact Form 7” y pegá su shortcode en Personalizar → DP · Contenido del Home → Contacto.', 'studio-dark-portfolio' ) . '</p>';
+                    }
+                    echo '</div>';
+                }
+                ?>
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
 
 </main>
 

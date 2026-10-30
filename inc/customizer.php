@@ -62,7 +62,56 @@ function dp_home_defaults() {
         'dp_social_vimeo'    => 'https://vimeo.com',
         'dp_social_linkedin' => 'https://linkedin.com',
         'dp_footer_copyright'=> 'DP Producciones',
+
+        // Encabezado: Portafolio
+        'dp_pf_eyebrow'      => 'PORTAFOLIO AUDIOVISUAL · CASE STUDIES',
+        'dp_pf_title'        => 'PRODUCCIÓN CINEMATOGRÁFICA',
+        'dp_pf_text'         => 'Transformamos visiones en experiencias cinematográficas. Desde comerciales de alta gama hasta piezas de autor, aplicamos color grading de nivel cinematográfico en cada frame.',
+
+        // Color Grading
+        'dp_cg_eyebrow'      => 'TÉCNICA CINEMATOGRÁFICA · ETALONAJE',
+        'dp_cg_title'        => 'Cinematic Color Grading: Log to Final Film Look',
+        'dp_cg_text'         => 'Transformamos la señal neutra de cámara (S-Log3/V-Log) en una pieza cinematográfica con emulación de película Kodak 2383. Desliza para ver el proceso de etalonaje.',
+        'dp_cg_img'          => 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=2400&q=90',
+        'dp_cg_meta'         => '[ CAMERA: SONY A7SIII ]  |  [ COLOR SPACE: REC.709 ]  |  [ LUT: APEX FILM ]',
+
+        // Encabezado: Tienda
+        'dp_store_eyebrow'   => 'Catálogo Oficial · Fotografía & Video en Stock',
+        'dp_store_title'     => 'METRAJE 4K & FOTOGRAFÍA AUTORAL',
+        'dp_store_text'      => 'Seleccioná activos marcándolos con el corazón para armar tu selección y adquirirlos en lote con entrega instantánea.',
+
+        // Servicios / Especialidades
+        'dp_sv_label'        => 'Especialidades & Servicios Principales',
+        'dp_sv_note'         => 'End-to-End Workflow',
+        'dp_sv_c1_title'     => 'Producción Comercial',
+        'dp_sv_c1_text'      => 'Spots publicitarios, dirección de fotografía 4K/8K, rodajes aéreos con drones y corrección de color en DaVinci Resolve.',
+        'dp_sv_c2_title'     => 'Diseño Gráfico & Indumentaria',
+        'dp_sv_c2_text'      => 'Desarrollo de identidad visual, gráfica para indumentaria técnica, dirección de arte, cartelería de cine y packaging.',
+        'dp_sv_c3_title'     => 'Soporte IT & Infraestructura',
+        'dp_sv_c3_text'      => 'Sistemas de almacenamiento masivo SAN/NAS de alta velocidad para postproducción, redes corporativas y seguridad de datos.',
+
+        // Sección de Contacto (formulario)
+        'dp_contact_enable'  => '1',
+        'dp_contact_eyebrow' => 'Contacto',
+        'dp_contact_title'   => 'Hablemos de tu proyecto',
+        'dp_contact_text'    => 'Contanos qué necesitás y te respondemos a la brevedad.',
+        'dp_contact_form'    => '',
+
+        // Títulos de columnas del pie
+        'dp_footer_col2_title' => 'Producción',
+        'dp_footer_col3_title' => 'Tienda de Recursos',
+        'dp_footer_col4_title' => 'Conectar',
     );
+}
+
+/**
+ * Sanitiza un checkbox del Personalizador ('1' o '').
+ *
+ * @param mixed $value
+ * @return string
+ */
+function dp_sanitize_checkbox( $value ) {
+    return ( ! empty( $value ) ) ? '1' : '';
 }
 
 /**
@@ -114,6 +163,21 @@ function dp_customize_register( $wp_customize ) {
             $sanitize = 'esc_url_raw';
         } elseif ( 'email' === $type ) {
             $sanitize = 'sanitize_email';
+        } elseif ( 'checkbox' === $type ) {
+            $sanitize = 'dp_sanitize_checkbox';
+        } elseif ( 'shortcode' === $type ) {
+            $sanitize = 'sanitize_text_field'; // mantiene [shortcode id="..."]
+        }
+
+        $control_type = 'text';
+        if ( 'textarea' === $type || 'shortcode' === $type ) {
+            $control_type = 'textarea';
+        } elseif ( 'url' === $type ) {
+            $control_type = 'url';
+        } elseif ( 'email' === $type ) {
+            $control_type = 'email';
+        } elseif ( 'checkbox' === $type ) {
+            $control_type = 'checkbox';
         }
 
         $wp_customize->add_setting( $id, array(
@@ -126,7 +190,7 @@ function dp_customize_register( $wp_customize ) {
             'label'       => $label,
             'description' => $desc,
             'section'     => $section,
-            'type'        => ( 'textarea' === $type ) ? 'textarea' : ( 'url' === $type ? 'url' : ( 'email' === $type ? 'email' : 'text' ) ),
+            'type'        => $control_type,
         ) );
     };
 
@@ -200,5 +264,65 @@ function dp_customize_register( $wp_customize ) {
     $add( 'dp_social_vimeo', __( 'Vimeo (URL)', 'studio-dark-portfolio' ), 'dp_sec_contact', 'url' );
     $add( 'dp_social_linkedin', __( 'LinkedIn (URL)', 'studio-dark-portfolio' ), 'dp_sec_contact', 'url' );
     $add( 'dp_footer_copyright', __( 'Nombre en el copyright', 'studio-dark-portfolio' ), 'dp_sec_contact', 'text' );
+    $add( 'dp_footer_col2_title', __( 'Título columna “Producción”', 'studio-dark-portfolio' ), 'dp_sec_contact', 'text' );
+    $add( 'dp_footer_col3_title', __( 'Título columna “Tienda de Recursos”', 'studio-dark-portfolio' ), 'dp_sec_contact', 'text' );
+    $add( 'dp_footer_col4_title', __( 'Título columna “Conectar”', 'studio-dark-portfolio' ), 'dp_sec_contact', 'text', __( 'Los enlaces de las columnas “Producción” y “Tienda de Recursos” se editan en Apariencia → Menús (ubicaciones “Pie — Columna Producción” y “Pie — Columna Tienda”).', 'studio-dark-portfolio' ) );
+
+    /* ---- Sección: Encabezado del Portafolio ---- */
+    $wp_customize->add_section( 'dp_sec_pf', array(
+        'title'       => __( 'Portafolio (encabezado)', 'studio-dark-portfolio' ),
+        'description' => __( 'Solo los textos del encabezado. Los proyectos se cargan en Portfolio.', 'studio-dark-portfolio' ),
+        'panel'       => 'dp_home_panel',
+    ) );
+    $add( 'dp_pf_eyebrow', __( 'Etiqueta superior', 'studio-dark-portfolio' ), 'dp_sec_pf', 'text' );
+    $add( 'dp_pf_title', __( 'Título', 'studio-dark-portfolio' ), 'dp_sec_pf', 'text' );
+    $add( 'dp_pf_text', __( 'Párrafo', 'studio-dark-portfolio' ), 'dp_sec_pf', 'textarea' );
+
+    /* ---- Sección: Color Grading ---- */
+    $wp_customize->add_section( 'dp_sec_cg', array(
+        'title' => __( 'Color Grading (comparador)', 'studio-dark-portfolio' ),
+        'panel' => 'dp_home_panel',
+    ) );
+    $add( 'dp_cg_eyebrow', __( 'Etiqueta superior', 'studio-dark-portfolio' ), 'dp_sec_cg', 'text' );
+    $add( 'dp_cg_title', __( 'Título', 'studio-dark-portfolio' ), 'dp_sec_cg', 'text' );
+    $add( 'dp_cg_text', __( 'Párrafo', 'studio-dark-portfolio' ), 'dp_sec_cg', 'textarea' );
+    $add_image( 'dp_cg_img', __( 'Imagen del comparador', 'studio-dark-portfolio' ), 'dp_sec_cg', __( 'Se muestra con dos tratamientos (plano/etalonado) al deslizar.', 'studio-dark-portfolio' ) );
+    $add( 'dp_cg_meta', __( 'Línea técnica', 'studio-dark-portfolio' ), 'dp_sec_cg', 'text' );
+
+    /* ---- Sección: Encabezado de la Tienda ---- */
+    $wp_customize->add_section( 'dp_sec_store', array(
+        'title'       => __( 'Tienda (encabezado)', 'studio-dark-portfolio' ),
+        'description' => __( 'Solo los textos del encabezado. Las fotos se cargan como productos.', 'studio-dark-portfolio' ),
+        'panel'       => 'dp_home_panel',
+    ) );
+    $add( 'dp_store_eyebrow', __( 'Etiqueta superior', 'studio-dark-portfolio' ), 'dp_sec_store', 'text' );
+    $add( 'dp_store_title', __( 'Título', 'studio-dark-portfolio' ), 'dp_sec_store', 'text' );
+    $add( 'dp_store_text', __( 'Párrafo', 'studio-dark-portfolio' ), 'dp_sec_store', 'textarea' );
+
+    /* ---- Sección: Servicios / Especialidades ---- */
+    $wp_customize->add_section( 'dp_sec_services', array(
+        'title' => __( 'Servicios / Especialidades', 'studio-dark-portfolio' ),
+        'panel' => 'dp_home_panel',
+    ) );
+    $add( 'dp_sv_label', __( 'Título de la fila', 'studio-dark-portfolio' ), 'dp_sec_services', 'text' );
+    $add( 'dp_sv_note', __( 'Etiqueta de la derecha', 'studio-dark-portfolio' ), 'dp_sec_services', 'text' );
+    $add( 'dp_sv_c1_title', __( 'Tarjeta 1 — título', 'studio-dark-portfolio' ), 'dp_sec_services', 'text' );
+    $add( 'dp_sv_c1_text', __( 'Tarjeta 1 — texto', 'studio-dark-portfolio' ), 'dp_sec_services', 'textarea' );
+    $add( 'dp_sv_c2_title', __( 'Tarjeta 2 — título', 'studio-dark-portfolio' ), 'dp_sec_services', 'text' );
+    $add( 'dp_sv_c2_text', __( 'Tarjeta 2 — texto', 'studio-dark-portfolio' ), 'dp_sec_services', 'textarea' );
+    $add( 'dp_sv_c3_title', __( 'Tarjeta 3 — título', 'studio-dark-portfolio' ), 'dp_sec_services', 'text' );
+    $add( 'dp_sv_c3_text', __( 'Tarjeta 3 — texto', 'studio-dark-portfolio' ), 'dp_sec_services', 'textarea' );
+
+    /* ---- Sección: Contacto (formulario) ---- */
+    $wp_customize->add_section( 'dp_sec_contact_form', array(
+        'title'       => __( 'Contacto (sección con formulario)', 'studio-dark-portfolio' ),
+        'description' => __( 'Agrega una sección de contacto al final del home. Pegá el shortcode de tu formulario (p. ej. Contact Form 7).', 'studio-dark-portfolio' ),
+        'panel'       => 'dp_home_panel',
+    ) );
+    $add( 'dp_contact_enable', __( 'Mostrar la sección de contacto', 'studio-dark-portfolio' ), 'dp_sec_contact_form', 'checkbox' );
+    $add( 'dp_contact_eyebrow', __( 'Etiqueta superior', 'studio-dark-portfolio' ), 'dp_sec_contact_form', 'text' );
+    $add( 'dp_contact_title', __( 'Título', 'studio-dark-portfolio' ), 'dp_sec_contact_form', 'text' );
+    $add( 'dp_contact_text', __( 'Párrafo', 'studio-dark-portfolio' ), 'dp_sec_contact_form', 'textarea' );
+    $add( 'dp_contact_form', __( 'Shortcode del formulario', 'studio-dark-portfolio' ), 'dp_sec_contact_form', 'shortcode', __( 'Ejemplo: [contact-form-7 id="123" title="Contacto"]. Si lo dejás vacío se muestra tu email de contacto.', 'studio-dark-portfolio' ) );
 }
 add_action( 'customize_register', 'dp_customize_register' );

@@ -49,8 +49,10 @@ function studio_setup() {
 
     // Registro de menús de navegación
     register_nav_menus( array(
-        'primary' => __( 'Menú Principal Superior', 'studio-dark-portfolio' ),
-        'footer'  => __( 'Menú del Pie de Página', 'studio-dark-portfolio' ),
+        'primary'            => __( 'Menú Principal Superior', 'studio-dark-portfolio' ),
+        'footer'             => __( 'Menú del Pie de Página', 'studio-dark-portfolio' ),
+        'footer_col_prod'    => __( 'Pie — Columna Producción', 'studio-dark-portfolio' ),
+        'footer_col_store'   => __( 'Pie — Columna Tienda', 'studio-dark-portfolio' ),
     ) );
 
     // Soporte completo para WooCommerce
